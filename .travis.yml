@@ -4,10 +4,6 @@ python:
   - "2.7"
 # command to install dependencies
 env:
-  - CONFIG="pip install pytest==2.2.3 pytest-xdist --use-mirrors"
-  - CONFIG="pip install pytest==2.2.3 --use-mirrors"
-  - CONFIG="pip install pytest==2.2.4 pytest-xdist --use-mirrors"
-  - CONFIG="pip install pytest==2.2.4 --use-mirrors"
   - CONFIG="pip install pytest==2.3 pytest-xdist --use-mirrors"
   - CONFIG="pip install pytest==2.3 --use-mirrors"
   - CONFIG="pip install pytest==2.3.1 pytest-xdist --use-mirrors"
