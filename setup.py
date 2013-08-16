@@ -2,7 +2,7 @@ from setuptools import setup
 import os
 
 
-version = '0.02'
+version = '0.03'
 
 try:  # this block doesn't work under tox
   here = os.path.abspath(os.path.dirname(__file__))
@@ -18,7 +18,7 @@ setup(name='pytest-random',
       author='Leah Klearman',
       author_email='lklrmn@gmail.com',
       url='https://github.com/klrmn/pytest-random',
-      install_requires=['pytest>=2.2.3'],
+      install_requires=['pytest>=2.2.3', 'pytest-cache'],
       py_modules=['random_plugin'],
       entry_points={'pytest11': ['pytest_random = random_plugin']},
       license='Mozilla Public License 2.0 (MPL 2.0)',

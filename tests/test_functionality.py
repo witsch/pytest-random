@@ -147,6 +147,21 @@ class TestFunctionality(object):
         assert first_output.outlines[6:-1] != third_output.outlines[6:-1]
 
 
+    def test_last_seed_is_reused(self, testdir):
+        # set up prereqs
+        self._set_things_up(testdir)
+
+        # do randomized run
+        first_run = testdir.runpytest('--random', '--verbose')
+        first_output = [line for line in first_run.outlines
+            if line.startswith(u'Tests are shuffled')]
+        # second run should be the same order
+        second_run = testdir.runpytest('--random', '--random-last', '--verbose')
+        second_output = [line for line in second_run.outlines
+            if line.startswith(u'Tests are shuffled')]
+        assert first_output == second_output
+
+
     # fixtures are in version 2.3 onward
     @pytest.mark.skipif("pytest.__version__ < '2.3'")
     def test_group_by_fixture(self, testdir):

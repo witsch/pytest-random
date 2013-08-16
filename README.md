@@ -19,3 +19,5 @@ options:
 * `--random-seed=RANDOM_SEED`
                         the seed to use for randomization if you need to
                         repeat a run.
+* `--random-last`       use the seed from the previous run. this makes it
+                        easier to track down isolation issues.

@@ -22,10 +22,19 @@ def pytest_addoption(parser):
         type=int,
         default=int(time.time() * 256),
         help="the seed to use for randomization if you need to repeat a run.")
+    group._addoption('--random-last',
+        action="store_true",
+        dest="random_last",
+        default=False,
+        help="use the seed from the previous run.")
 
 
 def pytest_report_header(config):
     if config.option.random:
+        if config.option.random_last:
+            seed = config.cache.get('random/seed', config.option.random_seed)
+            config.option.random_seed = seed
+        config.cache.set('random/seed', config.option.random_seed)
         return "Tests are shuffled using seed number %d." % config.option.random_seed
 
 

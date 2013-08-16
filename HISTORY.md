@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.03 - Unreleased
+-----------------
+
+* Add --random-last option to use the seed from the previous run.
+  [witsch (Andreas Zeidler)]
+
+
 0.02 - 2013-02-21
 ----------------
 
