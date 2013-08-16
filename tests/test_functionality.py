@@ -159,19 +159,21 @@ class TestFunctionality(object):
         for x in range(5):
             actual_output = testdir.runpytest('--random', '--random-group', '--verbose')
             assert actual_output.outlines[6:-1] != self.expected_output.outlines[6:-1]
+            matches = filter(None, map(matcher.search, actual_output.outlines))
             indices = dict(
                 [
-                    (matcher.search(x).group(1), i)
-                    for i, x in enumerate(actual_output.outlines[7:-2])])
+                    (match.group(1), i)
+                    for i, match in enumerate(matches)])
             assert abs(indices['test_d'] - indices['test_f']) == 1
         # now run without grouping and check that test_d and test_f can be apart from one another
         gathered_indices = set()
         for x in range(5):
             actual_output = testdir.runpytest('--random', '--verbose')
             assert actual_output.outlines[6:-1] != self.expected_output.outlines[6:-1]
+            matches = filter(None, map(matcher.search, actual_output.outlines))
             indices = dict(
                 [
-                    (matcher.search(x).group(1), i)
-                    for i, x in enumerate(actual_output.outlines[7:-2])])
+                    (match.group(1), i)
+                    for i, match in enumerate(matches)])
             gathered_indices.add(abs(indices['test_d'] - indices['test_f']))
         assert gathered_indices != set([1])
