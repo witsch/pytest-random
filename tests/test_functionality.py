@@ -162,7 +162,7 @@ class TestFunctionality(object):
             indices = dict(
                 [
                     (matcher.search(x).group(1), i)
-                    for i, x in enumerate(actual_output.outlines[6:-2])])
+                    for i, x in enumerate(actual_output.outlines[7:-2])])
             assert abs(indices['test_d'] - indices['test_f']) == 1
         # now run without grouping and check that test_d and test_f can be apart from one another
         gathered_indices = set()
@@ -172,6 +172,6 @@ class TestFunctionality(object):
             indices = dict(
                 [
                     (matcher.search(x).group(1), i)
-                    for i, x in enumerate(actual_output.outlines[6:-2])])
+                    for i, x in enumerate(actual_output.outlines[7:-2])])
             gathered_indices.add(abs(indices['test_d'] - indices['test_f']))
         assert gathered_indices != set([1])
